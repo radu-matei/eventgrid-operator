@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eventgrid-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: eventgrid-operator
+  template:
+    metadata:
+      labels:
+        name: eventgrid-operator
+    spec:
+      containers:
+        - name: eventgrid-operator
+          image: radumatei/eventgrid-operator:v0.1
+          ports:
+          - containerPort: 60000
+            name: metrics
+          command:
+          - eventgrid-operator
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: OPERATOR_NAME
+              value: "eventgrid-operator"
