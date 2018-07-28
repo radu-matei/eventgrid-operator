@@ -1,0 +1,4 @@
+apiVersion: "eventgrid.k8s.io/v1alpha1"
+kind: "EventGridTopic"
+metadata:
+  name: "example"

@@ -1,0 +1,3 @@
+apiVersion: eventgrid.k8s.io/v1alpha1
+kind: EventGridTopic
+projectName: eventgrid-operator
